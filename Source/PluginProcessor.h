@@ -28,6 +28,20 @@ struct ChainSettings
 
 ChainSettings getChainSettings(juce::AudioProcessorValueTreeState& apvts);
 
+using Filter = juce::dsp::IIR::Filter<float>;
+
+// A single Filter has a 12 db/Oct slope. We need 4 if we want a max of 48 db/Oct
+using CutFilter = juce::dsp::ProcessorChain<Filter, Filter, Filter, Filter>;
+
+using MonoChain = juce::dsp::ProcessorChain<CutFilter, Filter, CutFilter>;
+
+enum ChainPositions
+{
+	LowCut,
+	Peak,
+	HighCut
+};
+
 //==============================================================================
 /**
 */
@@ -78,21 +92,8 @@ public:
     juce::AudioProcessorValueTreeState apvts{ *this, nullptr, "Parameters", createParameterLayout() };
 
 private:
-    using Filter = juce::dsp::IIR::Filter<float>;
-
-    // A single Filter has a 12 db/Oct slope. We need 4 if we want a max of 48 db/Oct
-    using CutFilter = juce::dsp::ProcessorChain<Filter, Filter, Filter, Filter>;
-
-    using MonoChain = juce::dsp::ProcessorChain<CutFilter, Filter, CutFilter>;
 
     MonoChain leftChain, rightChain;
-
-    enum ChainPositions
-    {
-        LowCut,
-        Peak,
-        HighCut
-    };
 
     void updatePeakFilter(const ChainSettings& chainSettings);
     void updateLowCutFilter(const ChainSettings& chainSettings);
