@@ -95,6 +95,10 @@ private:
     };
 
     void updatePeakFilter(const ChainSettings& chainSettings);
+    void updateLowCutFilter(const ChainSettings& chainSettings);
+    void updateHighCutFilter(const ChainSettings& chainSettings);
+
+    void updateFilters();
 
     using Coefficients = Filter::CoefficientsPtr;
     static void updateCoefficients(Coefficients& old, const Coefficients& replacements);
