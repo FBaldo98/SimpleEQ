@@ -40,7 +40,6 @@ void LookAndFeel::drawRotarySlider(juce::Graphics& g,
 
 	auto sliderAngleRad = jmap(sliderPosProportional, 0.f, 1.f, rotaryStartAngle, rotaryEndAngle);
 	p.applyTransform(AffineTransform().rotated(sliderAngleRad, center.getX(), center.getY()));
-	p.applyTransform(AffineTransform().rotated(sliderAngleRad, center.getX(), center.getY()));
 
 	g.fillPath(p);
 }
