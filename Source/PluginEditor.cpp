@@ -72,11 +72,6 @@ void RotarySliderWithLabels::paint(juce::Graphics& g)
 
 	auto sliderBounds = getSliderBounds();
 
-	//g.setColour(Colours::red);
-	//g.drawRect(getLocalBounds());
-	//g.setColour(Colours::yellow);
-	//g.drawRect(sliderBounds);
-
 	getLookAndFeel().drawRotarySlider(g, 
 		sliderBounds.getX(), 
 		sliderBounds.getY(), 
@@ -412,9 +407,6 @@ juce::Rectangle<int> ResponseCurveComponent::getRenderArea()
 {
 	auto bounds = getLocalBounds();
 
-	//bounds.reduce(10, //JUCE_LIVE_CONSTANT(5),
-	//	8 //JUCE_LIVE_CONSTANT(5)
-	//);
 	bounds.removeFromTop(12);
 	bounds.removeFromBottom(2);
 	bounds.removeFromLeft(20);
@@ -500,7 +492,7 @@ void SimpleEQAudioProcessorEditor::paint (juce::Graphics& g)
 void SimpleEQAudioProcessorEditor::resized()
 {
     auto bounds = getLocalBounds();
-	float hRatio = 25.f / 100.f; // JUCE_LIVE_CONSTANT(33) / 100.f;
+	float hRatio = 25.f / 100.f;
     auto responseArea = bounds.removeFromTop(bounds.getHeight() * hRatio);
 
 	responseCurveComponent.setBounds(responseArea);
