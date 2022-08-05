@@ -396,6 +396,15 @@ void ResponseCurveComponent::resized()
 
 		g.drawFittedText(str, r, juce::Justification::centred, 1);
 
+		str.clear();
+		str << (gDb - 24.f);
+
+		textWidth = g.getCurrentFont().getStringWidth(str);
+		r.setX(1);
+		r.setSize(textWidth, fontHeight);
+		g.setColour(Colours::lightgrey);
+
+		g.drawFittedText(str, r, juce::Justification::centred, 1);
 	}
 }
 
