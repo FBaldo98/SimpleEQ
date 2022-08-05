@@ -228,7 +228,7 @@ void ResponseCurveComponent::paint(juce::Graphics& g)
 
 	g.drawImage(background, getLocalBounds().toFloat());
 
-	auto responseArea = getRenderArea(); //getLocalBounds();
+	auto responseArea = getAnalysisArea(); //getLocalBounds();
 
 	auto w = responseArea.getWidth();
 
