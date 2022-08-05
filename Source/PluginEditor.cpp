@@ -353,9 +353,12 @@ void SimpleEQAudioProcessorEditor::paint (juce::Graphics& g)
 void SimpleEQAudioProcessorEditor::resized()
 {
     auto bounds = getLocalBounds();
-    auto responseArea = bounds.removeFromTop(bounds.getHeight() * 0.33);
+	float hRatio = 25.f / 100.f; // JUCE_LIVE_CONSTANT(33) / 100.f;
+    auto responseArea = bounds.removeFromTop(bounds.getHeight() * hRatio);
 
 	responseCurveComponent.setBounds(responseArea);
+
+	bounds.removeFromTop(5);
 
     auto lowCutArea = bounds.removeFromLeft(bounds.getWidth() * 0.33);
     auto highCutArea = bounds.removeFromRight(bounds.getWidth() * 0.5);
